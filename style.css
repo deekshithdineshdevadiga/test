@@ -81,3 +81,31 @@ footer {
     height: 180px;
   }
 }
+
+/* FILTER BUTTONS */
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 16px 0;
+  flex-wrap: wrap;
+}
+
+.filters button {
+  padding: 8px 14px;
+  border: none;
+  background: #ddd;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.filters button.active {
+  background: #111;
+  color: white;
+}
+
+/* Smooth transition */
+.art-card {
+  transition: all 0.3s ease;
+}
