@@ -1,94 +1,83 @@
-/* RESET */
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, sans-serif;
 }
 
-/* BODY */
 body {
-  background-color: #cf1d1d;
-  color: #333;
-  overflow-x: hidden; /* CRITICAL FIX */
+  background: #f4f4f4;
 }
 
-/* HEADER */
+/* Header */
 header {
-  background-color: #111;
-  color: #fff;
+  background: #111;
+  color: white;
+  padding: 20px;
   text-align: center;
-  padding: 16px 10px;
 }
 
 header h1 {
-  font-size: 1.4rem;
-  margin-bottom: 4px;
+  font-size: 22px;
 }
 
 header p {
-  font-size: 0.9rem;
+  font-size: 14px;
   opacity: 0.8;
 }
 
-/* MAIN */
-main {
-  padding: 10px;
-}
-
-/* GALLERY – MOBILE FIRST */
+/* Gallery container */
 .gallery {
-  display: flex;
-  flex-direction: column;   /* ONE COLUMN ON MOBILE */
-  gap: 16px;
-  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  padding: 20px;
 }
 
-/* CARD */
-.card {
-  background-color: #fff;
+/* Card */
+.art-card {
+  background: white;
   border-radius: 10px;
-  overflow: hidden;         /* IMPORTANT */
-  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* IMAGE */
-.card img {
+/* Image */
+.art-card img {
   width: 100%;
-  height: auto;
+  height: 220px;
+  object-fit: cover;
   display: block;
 }
 
-/* TITLE */
-.card p,
-.card h3 {
+/* Title */
+.art-card h3 {
   padding: 10px;
+  font-size: 16px;
   text-align: center;
-  font-size: 0.95rem;
 }
 
-/* FOOTER */
+/* Footer */
 footer {
-  background-color: #111;
-  color: #fff;
+  background: #111;
+  color: white;
   text-align: center;
-  padding: 12px 5px;
-  font-size: 0.85rem;
+  padding: 10px;
+  font-size: 13px;
 }
 
-/* ===== TABLET & DESKTOP ===== */
-@media (min-width: 768px) {
-  .gallery {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-  }
-
+/* ✅ MOBILE FIX */
+@media (max-width: 600px) {
   header h1 {
-    font-size: 1.8rem;
+    font-size: 18px;
   }
 
-  main {
-    padding: 20px;
+  .gallery {
+    padding: 10px;
+    gap: 15px;
+  }
+
+  .art-card img {
+    height: auto;
   }
 }
