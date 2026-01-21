@@ -20,3 +20,4 @@ function filterArt(type) {
             : "none";
     });
 }
+

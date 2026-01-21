@@ -1,58 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>My Art Gallery</title>
-    <link rel="stylesheet" href="style1.css">
+  <meta charset="UTF-8">
+
+  <!-- MUST for mobile -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>My Art Gallery</title>
+
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
+  <header>
     <h1>🎨 My Art Gallery</h1>
-    <button onclick="toggleDark()">🌙 Dark Mode</button>
-</header>
+    <p>Welcome to my creative world</p>
+  </header>
 
-<section class="bio">
-    <h2>About Me</h2>
-    <p>I express emotions through art. Browse, enjoy, and collect.</p>
-</section>
+  <main>
+    <section class="gallery">
 
-<!-- FILTER -->
-<div class="filters">
-    <button onclick="filterArt('all')">All</button>
-    <button onclick="filterArt('sketch')">Sketch</button>
-    <button onclick="filterArt('wallpainting')">Wall-Painting</button>
-    <!-- <button onclick="filterArt('digital')">Digital</button> -->
-</div>
+      <div class="card">
+        <img src="images/1.jfif" alt="Artwork 1">
+        <h3>Artwork Title 1</h3>
+      </div>
 
-<!-- GALLERY -->
-<section class="gallery">
-    <div class="art-card wallpainting">
-        <img src="images/1.jfif" onclick="openLightbox(this.src)">
-        <span class="watermark">© YourName</span>
-        <a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="buy">Buy</a>
-    </div>
+      <div class="card">
+        <img src="images/2.jfif" alt="Artwork 2">
+        <h3>Artwork Title 2</h3>
+      </div>
 
-    <div class="art-card wallpainting">
-        <img src="images/2.jfif" onclick="openLightbox(this.src)">
-        <span class="watermark">© YourName</span>
-        <a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="buy">Buy</a>
-    </div>
+      <div class="card">
+        <img src="images/3.jfif" alt="Artwork 3">
+        <h3>Artwork Title 3</h3>
+      </div>
 
-    <div class="art-card wallpainting">
-        <img src="images/3.jfif" onclick="openLightbox(this.src)">
-        <span class="watermark">© YourName</span>
-        <a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="buy">Buy</a>
-    </div>
-</section>
+    </section>
+  </main>
 
-<!-- LIGHTBOX -->
-<div id="lightbox" onclick="closeLightbox()">
-    <img id="lightbox-img">
-</div>
+  <footer>
+    © 2026 Sachin | All Rights Reserved
+  </footer>
 
-<footer>© 2026 Your Name</footer>
-
-<script src="script.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
