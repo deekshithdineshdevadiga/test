@@ -1,20 +1,35 @@
-
-const toggle = document.getElementById("themeToggle");
+// const toggle = document.getElementById("themeToggle");
 
 // Load saved theme
-if (localStorage.getItem("theme") === "dark") {
-  document.body.classList.add("dark");
-  toggle.textContent = "☀️";
-}
+// if (localStorage.getItem("theme") === "dark") {
+//   document.body.classList.add("dark");
+//   toggle.checked = true;
+// }
 
-toggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
+// toggle.addEventListener("change", () => {
+//   document.body.classList.toggle("dark");
 
-  if (document.body.classList.contains("dark")) {
-    toggle.textContent = "☀️";
-    localStorage.setItem("theme", "dark");
-  } else {
-    toggle.textContent = "🌙";
-    localStorage.setItem("theme", "light");
+//   if (document.body.classList.contains("dark")) {
+//     localStorage.setItem("theme", "dark");
+//   } else {
+//     localStorage.setItem("theme", "light");
+//   }
+// });
+
+  // THEME TOGGLE
+  const toggle = document.getElementById("themeToggle");
+  toggle.addEventListener("change", () => {
+    document.body.classList.toggle("dark");
+  });
+
+  // FILTER BUTTON ACTIVE STATE
+  function filterArt(type, btn) {
+    document.querySelectorAll(".filters button")
+      .forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+
+    // filtering logic can be added here later
+    console.log("Filter:", type);
   }
-});
+
+

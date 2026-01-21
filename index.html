@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -8,50 +8,116 @@
 </head>
 <body>
 
-<header>
-  🎨 My Art Gallery
-  <small>Welcome to my creative world</small>
-  <button id="themeToggle">🌙</button>
+<header class="header"> -->
+  <!-- LEFT -->
+  <!-- <div class="header-left">
+    <h1>🎨 My Art Gallery</h1>
+    <small>Welcome to my creative world</small>
+  </div> -->
+
+  <!-- CENTER FILTERS -->
+  <!-- <div class="filters">
+    <button class="active" onclick="filterArt('all', this)">All</button>
+    <button onclick="filterArt('sketch', this)">Sketch</button>
+    <button onclick="filterArt('wall', this)">Wall Painting</button>
+  </div> -->
+
+  <!-- RIGHT TOGGLE -->
+ <!-- <div class="header-right">
+  <label class="switch">
+    <input type="checkbox" id="themeToggle">
+    <span class="slider"></span>
+  </label>
+</div>
 </header>
 
-<!-- FILTER BUTTONS -->
-<div class="filters">
+<main class="page-wrapper">
+  <section class="gallery">
+
+    <div class="art-card wall">
+      <img src="images/1.jfif" alt="">
+      <div class="overlay">Wall Painting</div>
+    </div>
+
+    <div class="art-card wall">
+      <img src="images/2.jfif" alt="">
+      <div class="overlay">Wall Painting</div>
+    </div>
+
+    <div class="art-card wall">
+      <img src="images/3.jfif" alt="">
+      <div class="overlay">Wall Painting</div>
+    </div>
+
+    <div class="art-card sketch">
+      <img src="images/1.jfif" alt="">
+      <div class="overlay">Sketch</div>
+    </div>
+
+  </section>
+</main>
+
+<footer>
+  © 2026 Sachin | All Rights Reserved
+</footer> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Art Gallery</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="header">
+  <!-- LEFT -->
+  <div class="logo">
+    🎨 <span>My Art Gallery</span>
+  </div>
+
+  <!-- CENTER FILTERS -->
+ <div class="filters">
   <button class="active" onclick="filterArt('all', this)">All</button>
   <button onclick="filterArt('sketch', this)">Sketch</button>
   <button onclick="filterArt('wall', this)">Wall Painting</button>
 </div>
 
-<section class="gallery">
 
-  <!-- WALL PAINTING -->
+  <!-- RIGHT TOGGLE -->
+  <label class="switch">
+    <input type="checkbox" id="themeToggle">
+    <span class="slider"></span>
+  </label>
+</header>
+
+
+
+<main class="gallery">
   <div class="art-card" data-category="wall">
-    <img src="images/1.jfif" alt="Artwork">
+    <img src="images/1.jfif">
     <div class="overlay">Wall Painting</div>
   </div>
 
   <div class="art-card" data-category="wall">
-    <img src="images/2.jfif" alt="Artwork">
+    <img src="images/1.jfif">
     <div class="overlay">Wall Painting</div>
   </div>
 
   <div class="art-card" data-category="wall">
-    <img src="images/3.jfif" alt="Artwork">
+    <img src="images/1.jfif">
     <div class="overlay">Wall Painting</div>
   </div>
 
-  <!-- SKETCH -->
   <div class="art-card" data-category="sketch">
-    <img src="images/1.jfif" alt="Sketch">
+    <img src="images/2.jfif">
     <div class="overlay">Sketch</div>
   </div>
-
-</section>
-
+</main>
 
 <footer>
   © 2026 Sachin | All Rights Reserved
 </footer>
-
 
 
 <script src="js/theme.js" defer></script>
