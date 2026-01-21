@@ -11,60 +11,52 @@
 <header>
   🎨 My Art Gallery
   <small>Welcome to my creative world</small>
+  <button id="themeToggle">🌙</button>
 </header>
 
 <!-- FILTER BUTTONS -->
 <div class="filters">
-  <button class="active" onclick="filterArt('all')">All</button>
-  <button onclick="filterArt('sketch')">Sketch</button>
-  <button onclick="filterArt('wall')">Wall Painting</button>
+  <button class="active" onclick="filterArt('all', this)">All</button>
+  <button onclick="filterArt('sketch', this)">Sketch</button>
+  <button onclick="filterArt('wall', this)">Wall Painting</button>
 </div>
 
 <section class="gallery">
 
   <!-- WALL PAINTING -->
   <div class="art-card" data-category="wall">
-    <img src="images/1.jfif" alt="Wall Painting">
-    <img src="images/2.jfif" alt="Wall Painting">
-    <img src="images/3.jfif" alt="Wall Painting">
-    <h3>Wall Painting 1</h3>
+    <img src="images/1.jfif" alt="Artwork">
+    <div class="overlay">Wall Painting</div>
+  </div>
+
+  <div class="art-card" data-category="wall">
+    <img src="images/2.jfif" alt="Artwork">
+    <div class="overlay">Wall Painting</div>
+  </div>
+
+  <div class="art-card" data-category="wall">
+    <img src="images/3.jfif" alt="Artwork">
+    <div class="overlay">Wall Painting</div>
   </div>
 
   <!-- SKETCH -->
   <div class="art-card" data-category="sketch">
-    <img src="images/2.jfif" alt="Sketch">
-    <h3>Sketch 1</h3>
+    <img src="images/1.jfif" alt="Sketch">
+    <div class="overlay">Sketch</div>
   </div>
 
-  <!-- WALL PAINTING -->
-  <!-- <div class="art-card" data-category="wall">
-    <img src="images/3.jfif" alt="Wall Painting">
-    <h3>Wall Painting 2</h3>
-  </div> -->
-
 </section>
+
 
 <footer>
   © 2026 Sachin | All Rights Reserved
 </footer>
 
-<script>
-function filterArt(category) {
-  const cards = document.querySelectorAll('.art-card');
-  const buttons = document.querySelectorAll('.filters button');
 
-  buttons.forEach(btn => btn.classList.remove('active'));
-  event.target.classList.add('active');
 
-  cards.forEach(card => {
-    if (category === 'all' || card.dataset.category === category) {
-      card.style.display = 'block';
-    } else {
-      card.style.display = 'none';
-    }
-  });
-}
-</script>
+<script src="js/theme.js" defer></script>
+<script src="js/filter.js" defer></script>
+<script src="js/hover.js" defer></script>
 
 </body>
 </html>
