@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Art Gallery</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+
+<header>
+    <h1>🎨 My Art Gallery</h1>
+    <button onclick="toggleDark()">🌙 Dark Mode</button>
+</header>
+
+<section class="bio">
+    <h2>About Me</h2>
+    <p>I express emotions through art. Browse, enjoy, and collect.</p>
+</section>
+
+<!-- FILTER -->
+<div class="filters">
+    <button onclick="filterArt('all')">All</button>
+    <button onclick="filterArt('sketch')">Sketch</button>
+    <button onclick="filterArt('wallpainting')">Wall-Painting</button>
+    <!-- <button onclick="filterArt('digital')">Digital</button> -->
+</div>
+
+<!-- GALLERY -->
+<section class="gallery">
+    <div class="art-card wallpainting">
+        <img src="images/1.jfif" onclick="openLightbox(this.src)">
+        <span class="watermark">© YourName</span>
+        <a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="buy">Buy</a>
+    </div>
+
+    <div class="art-card wallpainting">
+        <img src="images/2.jfif" onclick="openLightbox(this.src)">
+        <span class="watermark">© YourName</span>
+        <a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="buy">Buy</a>
+    </div>
+
+    <div class="art-card wallpainting">
+        <img src="images/3.jfif" onclick="openLightbox(this.src)">
+        <span class="watermark">© YourName</span>
+        <a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="buy">Buy</a>
+    </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="closeLightbox()">
+    <img id="lightbox-img">
+</div>
+
+<footer>© 2026 Your Name</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
