@@ -26,7 +26,6 @@ body {
   background-attachment: fixed;
 }
 
-
 body.dark {
   background:
     linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
@@ -55,7 +54,6 @@ body.dark .header {
   background: rgba(0,0,0,0.6);
 }
 
-/* ================= LOGO & HAMBURGER ================= */
 .header-left {
   display: flex;
   align-items: center;
@@ -65,7 +63,7 @@ body.dark .header {
 .menu-toggle {
   font-size: 24px;
   cursor: pointer;
-  display: none;
+  display: none; /* mobile only */
 }
 
 .logo {
@@ -74,7 +72,7 @@ body.dark .header {
   white-space: nowrap;
 }
 
-/* ================= FILTERS (DESKTOP) ================= */
+/* ================= FILTERS (PC) ================= */
 .desktop-filters {
   display: flex;
   gap: 24px;
@@ -116,23 +114,97 @@ body.dark .desktop-filters button.active::after {
   background: #fff;
 }
 
+/* ================= THEME TOGGLE ================= */
+/* ================= THEME TOGGLE (PC FIXED) ================= */
+/* ===== TOGGLE WRAPPER ===== */
+.switch {
+  position: relative;
+  width: 52px;
+  height: 26px;
+  display: inline-block;
+}
+
+.switch input {
+  display: none;
+}
+
+/* ===== SLIDER ===== */
+.slider {
+  position: absolute;
+  inset: 0;
+  background: #e0e0e0;               /* clearly LIGHT */
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px;
+}
+
+/* ===== SLIDING KNOB ===== */
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 4px;
+  top: 4px;
+  /* background: #ffffff; */
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+  z-index: 2;
+}
+
+
+/* ===== ICONS ===== */
+.slider .sun,
+.slider .moon {
+  position: relative;
+  z-index: 3;          /* ✅ above the knob */
+  font-size: 14px;
+  transition: transform 0.3s ease;
+}
+
+
+/* LIGHT MODE DEFAULT */
+.slider .sun {
+  opacity: 1;
+}
+
+.slider .moon {
+  opacity: 0;
+}
+
+/* DARK MODE */
+.switch input:checked + .slider {
+  background: #222;
+}
+
+.switch input:checked + .slider::before {
+  transform: translateX(26px);
+}
+
+.switch input:checked + .slider .sun {
+  opacity: 0;
+}
+
+.switch input:checked + .slider .moon {
+  opacity: 1;
+}
+
 /* ================= GALLERY ================= */
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 20px;
   padding: 20px;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-}
-
-/* MOBILE gallery reaction */
-.gallery.shifted {
-  transform: translateX(120px);
-  opacity: 0.6;
 }
 
 /* ================= ART CARD ================= */
 .art-card {
+  position: relative;           /* 🔥 FIXED hover */
   background: var(--card);
   border-radius: 18px;
   overflow: hidden;
@@ -148,33 +220,26 @@ body.dark .art-card {
   object-fit: cover;
 }
 
-/* ================= OVERLAY ================= */
-/* ===== CARD OVERLAY ===== */
+/* ================= CARD HOVER ================= */
 .overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(0,0,0,0.55);
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 18px;
-  font-weight: 500;
   opacity: 0;
-  pointer-events: none;
   transition: opacity 0.3s ease;
+  pointer-events: none;
 }
 
 .art-card:hover .overlay {
   opacity: 1;
 }
 
-
-.art-card:hover .overlay {
-  opacity: 1;
-}
-
-/* ================= SIDEBAR (MOBILE ONLY) ================= */
+/* ================= SIDEBAR (MOBILE) ================= */
 .sidebar {
   position: fixed;
   top: 60px;
@@ -186,7 +251,6 @@ body.dark .art-card {
 
   background: rgba(255,255,255,0.75);
   backdrop-filter: blur(14px);
-
   transition: left 0.3s ease;
 }
 
@@ -198,7 +262,6 @@ body.dark .sidebar {
   background: rgba(0,0,0,0.6);
 }
 
-/* Sidebar buttons */
 .sidebar button {
   background: none;
   border: none;
@@ -223,12 +286,26 @@ body.dark .sidebar {
   padding: 10px;
 }
 
+.footer-social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+}
+
+.footer-social img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
 body.dark .footer {
   background: rgba(0,0,0,0.6);
 }
 
-/* ================= MOBILE RULES ================= */
+/* ================= MOBILE ONLY ================= */
 @media (max-width: 768px) {
+
   .menu-toggle {
     display: block;
   }
@@ -237,133 +314,29 @@ body.dark .footer {
     display: none;
   }
 
+  .header-right {
+    display: none; /* hide PC toggle */
+  }
+
   .gallery {
     grid-template-columns: 1fr;
   }
-}
-/* Hide mobile theme toggle on desktop */
-.mobile-theme {
-  display: none;
-}
 
-/* MOBILE ONLY */
-@media (max-width: 768px) {
-  .header-right {
-    display: none; /* hide header toggle */
+  /* gallery dim ONLY when menu open */
+  .gallery.shifted {
+    transform: translateX(120px);
+    opacity: 0.6;
   }
 
+  /* theme toggle inside sidebar */
   .mobile-theme {
     display: flex;
     justify-content: center;
     margin-top: 30px;
   }
 }
-/* ===== THEME TOGGLE ===== */
-.switch {
-  position: relative;
-  width: 46px;
-  height: 24px;
-}
 
-.switch input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
-  inset: 0;
-  background: #ccc;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.slider::before {
-  content: "";
-  position: absolute;
-  height: 18px;
-  width: 18px;
-  left: 3px;
-  top: 3px;
-  background: white;
-  border-radius: 50%;
-  transition: transform 0.3s ease;
-}
-
-/* Checked (Dark mode) */
-/* ===== THEME SWITCH ===== */
-.switch {
-  position: relative;
-  width: 44px;
-  height: 22px;
-}
-
-.switch input {
+/* Hide mobile theme on PC */
+.mobile-theme {
   display: none;
 }
-
-.slider {
-  position: absolute;
-  inset: 0;
-  background: #bbb;
-  border-radius: 20px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.slider::before {
-  content: "";
-  position: absolute;
-  height: 16px;
-  width: 16px;
-  left: 3px;
-  top: 3px;
-  background: #fff;
-  border-radius: 50%;
-  transition: transform 0.3s;
-}
-
-/* Dark mode */
-.switch input:checked + .slider {
-  background: #222;
-}
-
-.switch input:checked + .slider::before {
-  transform: translateX(22px);
-}
-
-/* Icons */
-.slider .sun,
-.slider .moon {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 12px;
-  pointer-events: none;
-}
-
-.slider .sun {
-  left: 6px;
-}
-
-.slider .moon {
-  right: 6px;
-  opacity: 0;
-}
-
-.switch input:checked + .slider .sun {
-  opacity: 0;
-}
-
-.switch input:checked + .slider .moon {
-  opacity: 1;
-}
-
-/* Prevent permanent dimming */
-.art-card {
-  filter: none !important;
-  opacity: 1 !important;
-}
-

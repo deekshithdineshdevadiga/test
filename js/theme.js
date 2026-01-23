@@ -32,20 +32,30 @@
 // }
 const toggle = document.getElementById("themeToggle");
 
-// Load saved theme
-if (localStorage.getItem("theme") === "dark") {
+/* LOAD SAVED THEME */
+const savedTheme = localStorage.getItem("theme");
+
+if (savedTheme === "dark") {
   document.body.classList.add("dark");
   toggle.checked = true;
+} else {
+  document.body.classList.remove("dark");
+  toggle.checked = false;
 }
 
+/* TOGGLE THEME */
 toggle.addEventListener("change", () => {
-  document.body.classList.toggle("dark");
-
-  localStorage.setItem(
-    "theme",
-    document.body.classList.contains("dark") ? "dark" : "light"
-  );
+  if (toggle.checked) {
+    document.body.classList.add("dark");
+    localStorage.setItem("theme", "dark");
+  } else {
+    document.body.classList.remove("dark");
+    localStorage.setItem("theme", "light");
+  }
 });
+
+
+
 
 
 
