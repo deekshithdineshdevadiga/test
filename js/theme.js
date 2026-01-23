@@ -1,35 +1,54 @@
-// const toggle = document.getElementById("themeToggle");
+// const desktopToggle = document.getElementById("themeToggle");
+// const mobileToggle = document.getElementById("themeToggleMobile");
 
-// Load saved theme
+// /* Load saved theme */
 // if (localStorage.getItem("theme") === "dark") {
 //   document.body.classList.add("dark");
-//   toggle.checked = true;
+//   if (desktopToggle) desktopToggle.checked = true;
+//   if (mobileToggle) mobileToggle.checked = true;
 // }
 
-// toggle.addEventListener("change", () => {
-//   document.body.classList.toggle("dark");
+// /* Apply theme */
+// function applyTheme(isDark) {
+//   document.body.classList.toggle("dark", isDark);
+//   localStorage.setItem("theme", isDark ? "dark" : "light");
 
-//   if (document.body.classList.contains("dark")) {
-//     localStorage.setItem("theme", "dark");
-//   } else {
-//     localStorage.setItem("theme", "light");
-//   }
-// });
+//   if (desktopToggle) desktopToggle.checked = isDark;
+//   if (mobileToggle) mobileToggle.checked = isDark;
+// }
 
-  // THEME TOGGLE
-  const toggle = document.getElementById("themeToggle");
-  toggle.addEventListener("change", () => {
-    document.body.classList.toggle("dark");
-  });
+// /* Desktop toggle */
+// if (desktopToggle) {
+//   desktopToggle.addEventListener("change", e => {
+//     applyTheme(e.target.checked);
+//   });
+// }
 
-  // FILTER BUTTON ACTIVE STATE
-  function filterArt(type, btn) {
-    document.querySelectorAll(".filters button")
-      .forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
+// /* Mobile toggle */
+// if (mobileToggle) {
+//   mobileToggle.addEventListener("change", e => {
+//     applyTheme(e.target.checked);
+//   });
+// }
+const toggle = document.getElementById("themeToggle");
 
-    // filtering logic can be added here later
-    console.log("Filter:", type);
-  }
+// Load saved theme
+if (localStorage.getItem("theme") === "dark") {
+  document.body.classList.add("dark");
+  toggle.checked = true;
+}
+
+toggle.addEventListener("change", () => {
+  document.body.classList.toggle("dark");
+
+  localStorage.setItem(
+    "theme",
+    document.body.classList.contains("dark") ? "dark" : "light"
+  );
+});
+
+
+
+
 
 

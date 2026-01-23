@@ -70,38 +70,60 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<!-- HEADER -->
 <header class="header">
-  <!-- LEFT -->
-  <div class="logo">
-    🎨 <span>My Art Gallery</span>
+  <div class="header-left">
+    <div id="menuToggle" class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+    <div class="logo">🎨 Sachin's Art Gallery</div>
   </div>
 
-  <!-- CENTER FILTERS -->
- <div class="filters">
-  <button class="active" onclick="filterArt('all', this)">All</button>
-  <button onclick="filterArt('sketch', this)">Sketch</button>
-  <button onclick="filterArt('wall', this)">Wall Painting</button>
+  <!-- DESKTOP FILTERS -->
+  <div class="filters desktop-filters">
+    <button class="active" onclick="filterArt('all', this)">All</button>
+    <button onclick="filterArt('sketch', this)">Sketch</button>
+    <button onclick="filterArt('wall', this)">Wall Painting</button>
+  </div>
+
+  <!-- DESKTOP THEME TOGGLE -->
+  <div class="header-right desktop-only">
+    <label class="switch">
+      <input type="checkbox" id="themeToggleDesktop">
+      <span class="slider">
+        <span class="icon sun">☀️</span>
+        <span class="icon moon">🌙</span>
+      </span>
+    </label>
+  </div>
+</header>
+
+<!-- MOBILE SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+
+  <!-- MOBILE THEME TOGGLE -->
+  <div class="mobile-theme">
+  <label class="switch">
+    <input type="checkbox" id="themeToggleMobile">
+    <span class="slider">
+      <span class="icon sun">☀️</span>
+      <span class="icon moon">🌙</span>
+    </span>
+  </label>
 </div>
 
 
-  <!-- RIGHT TOGGLE -->
-  <label class="switch">
-  <input type="checkbox" id="themeToggle">
-  <span class="slider">
-    <span class="icon sun">☀️</span>
-    <span class="icon moon">🌙</span>
-  </span>
-</label>
-</header>
+  <!-- MOBILE FILTERS -->
+  <button onclick="filterArt('all', null, true)">All</button>
+  <button onclick="filterArt('sketch', null, true)">Sketch</button>
+  <button onclick="filterArt('wall', null, true)">Wall Painting</button>
+</aside>
 
+<!-- MOBILE OVERLAY -->
+<div id="menuOverlay"></div>
 
-
+<!-- GALLERY -->
 <main class="gallery">
-  <div class="art-card" data-category="wall">
-    <img src="images/1.jfif">
-    <div class="overlay">Wall Painting</div>
-  </div>
-
   <div class="art-card" data-category="wall">
     <img src="images/1.jfif">
     <div class="overlay">Wall Painting</div>
@@ -118,14 +140,25 @@
   </div>
 </main>
 
-<footer>
-  © 2026 Sachin | All Rights Reserved
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-social">
+    <a href="https://wa.me/917899735222?text=Hi%20I%20am%20interested%20in%20your%20artwork" target="_blank">
+      <img src="images/whatsapplogo.png" alt="WhatsApp">
+    </a>
+
+    <a href="https://www.instagram.com/_minion_boss_30_/" target="_blank">
+      <img src="images/instalogo.jfif" alt="Instagram">
+    </a>
+  </div>
+  <p>© 2026 Sachin | All Rights Reserved</p>
 </footer>
 
-
+<!-- JS FILES -->
 <script src="js/theme.js" defer></script>
 <script src="js/filter.js" defer></script>
 <script src="js/hover.js" defer></script>
+<script src="js/menu.js" defer></script>
 
 </body>
 </html>

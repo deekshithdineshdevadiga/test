@@ -1,3 +1,4 @@
+/* ================= RESET ================= */
 * {
   margin: 0;
   padding: 0;
@@ -9,43 +10,29 @@
   --bg: #f5f5f5;
   --text: #111;
   --card: #ffffff;
-  --header: #ffffff;
 }
 
-/* body.dark {
-  --bg: #121212;
-  --text: #ffffff;
-  --card: #1e1e1e;
-  --header: #000000;
-} */
-
 /* ================= BODY ================= */
-/* body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: Arial, sans-serif;
-  padding-top: 70px;
-  padding-bottom: 40px;
-} */
 body {
-  background: 
+  font-family: Arial, sans-serif;
+  color: var(--text);
+  padding-top: 60px;
+  padding-bottom: 60px;
+
+  background:
     linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)),
     url("images/1.jfif");
   background-size: cover;
-  background-position: center;
   background-attachment: fixed;
 }
 
-/* Dark mode background */
+
 body.dark {
-  background: 
-    linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)),
+  background:
+    linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
     url("images/1.jfif");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  color: #fff;
 }
-
 
 /* ================= HEADER ================= */
 .header {
@@ -53,65 +40,80 @@ body.dark {
   top: 0;
   width: 100%;
   height: 60px;
-
-  background: rgba(255, 255, 255, 0.6); /* transparent */
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-
-  color: #000;
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  padding: 0 20px;
   z-index: 1000;
-  border-bottom: 1px solid rgba(255,255,255,0.3);
-}
 
-/* Dark mode header */
-body.dark .header {
-  background: rgba(0, 0, 0, 0.5);
-  color: #fff;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-}
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(10px);
 
-
-/* LOGO */
-.logo {
-  font-size: 18px;
-  font-weight: bold;
-}
-
-/* ================= FILTER BUTTONS ================= */
-.filters {
   display: flex;
-  justify-content: center;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+}
+
+body.dark .header {
+  background: rgba(0,0,0,0.6);
+}
+
+/* ================= LOGO & HAMBURGER ================= */
+.header-left {
+  display: flex;
+  align-items: center;
   gap: 12px;
 }
 
-.filters button {
-  padding: 6px 16px;
-  border-radius: 20px;
-  border: none;
+.menu-toggle {
+  font-size: 24px;
   cursor: pointer;
-  background: #eaeaea;
-  color: #000;
-  font-size: 14px;
+  display: none;
 }
 
-.filters button.active {
+.logo {
+  font-size: 18px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+/* ================= FILTERS (DESKTOP) ================= */
+.desktop-filters {
+  display: flex;
+  gap: 24px;
+}
+
+.desktop-filters button {
+  background: none;
+  border: none;
+  font-size: 15px;
+  cursor: pointer;
+  color: #555;
+  position: relative;
+}
+
+.desktop-filters button.active {
+  color: #000;
+  font-weight: 600;
+}
+
+.desktop-filters button.active::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 100%;
+  height: 2px;
   background: #000;
+}
+
+body.dark .desktop-filters button {
+  color: #aaa;
+}
+
+body.dark .desktop-filters button.active {
   color: #fff;
 }
 
-/* DARK MODE FILTERS */
-body.dark .filters button {
-  background: #333;
-  color: #fff;
-}
-
-body.dark .filters button.active {
+body.dark .desktop-filters button.active::after {
   background: #fff;
-  color: #000;
 }
 
 /* ================= GALLERY ================= */
@@ -120,36 +122,46 @@ body.dark .filters button.active {
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 20px;
   padding: 20px;
-  margin-top: 80px;
-  justify-items: center; /* FIX: prevents single image stretching */
+  transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
+/* MOBILE gallery reaction */
+.gallery.shifted {
+  transform: translateX(120px);
+  opacity: 0.6;
+}
+
+/* ================= ART CARD ================= */
 .art-card {
   background: var(--card);
-  border-radius: 16px;
+  border-radius: 18px;
   overflow: hidden;
-  position: relative;
-  width: 100%;
-  max-width: 360px; /* FIX: single image size */
+}
+
+body.dark .art-card {
+  background: #1e1e1e;
 }
 
 .art-card img {
   width: 100%;
   aspect-ratio: 4 / 3;
   object-fit: cover;
-  display: block;
 }
 
 /* ================= OVERLAY ================= */
+/* ===== CARD OVERLAY ===== */
 .overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.6);
-  color: white;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 18px;
+  font-weight: 500;
   opacity: 0;
+  pointer-events: none;
   transition: opacity 0.3s ease;
 }
 
@@ -157,36 +169,135 @@ body.dark .filters button.active {
   opacity: 1;
 }
 
+
+.art-card:hover .overlay {
+  opacity: 1;
+}
+
+/* ================= SIDEBAR (MOBILE ONLY) ================= */
+.sidebar {
+  position: fixed;
+  top: 60px;
+  bottom: 60px;
+  left: -260px;
+  width: 260px;
+  padding: 20px;
+  z-index: 999;
+
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(14px);
+
+  transition: left 0.3s ease;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+body.dark .sidebar {
+  background: rgba(0,0,0,0.6);
+}
+
+/* Sidebar buttons */
+.sidebar button {
+  background: none;
+  border: none;
+  font-size: 16px;
+  padding: 12px 0;
+  text-align: left;
+  cursor: pointer;
+}
+
 /* ================= FOOTER ================= */
-footer {
+.footer {
   position: fixed;
   bottom: 0;
   width: 100%;
+  height: 60px;
 
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(255,255,255,0.6);
   backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
 
-  color: white;
   text-align: center;
-  padding: 8px;
   font-size: 12px;
-  border-top: 1px solid rgba(255,255,255,0.1);
+  padding: 10px;
 }
 
-/* Light mode footer */
-body:not(.dark) footer {
-  background: rgba(255, 255, 255, 0.6);
-  color: #000;
+body.dark .footer {
+  background: rgba(0,0,0,0.6);
 }
 
+/* ================= MOBILE RULES ================= */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
 
+  .desktop-filters {
+    display: none;
+  }
 
-/* ================= TOGGLE SWITCH ================= */
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+}
+/* Hide mobile theme toggle on desktop */
+.mobile-theme {
+  display: none;
+}
+
+/* MOBILE ONLY */
+@media (max-width: 768px) {
+  .header-right {
+    display: none; /* hide header toggle */
+  }
+
+  .mobile-theme {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
+}
+/* ===== THEME TOGGLE ===== */
 .switch {
-  width: 48px;
-  height: 26px;
   position: relative;
+  width: 46px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+  background: #ccc;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  top: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+/* Checked (Dark mode) */
+/* ===== THEME SWITCH ===== */
+.switch {
+  position: relative;
+  width: 44px;
+  height: 22px;
 }
 
 .switch input {
@@ -196,33 +307,50 @@ body:not(.dark) footer {
 .slider {
   position: absolute;
   inset: 0;
-  background: #ccc;
-  border-radius: 30px;
+  background: #bbb;
+  border-radius: 20px;
   cursor: pointer;
   transition: background 0.3s;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 6px;
-  font-size: 14px;
 }
 
-.icon {
-  z-index: 2;
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  left: 3px;
+  top: 3px;
+  background: #fff;
+  border-radius: 50%;
+  transition: transform 0.3s;
+}
+
+/* Dark mode */
+.switch input:checked + .slider {
+  background: #222;
+}
+
+.switch input:checked + .slider::before {
+  transform: translateX(22px);
+}
+
+/* Icons */
+.slider .sun,
+.slider .moon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
   pointer-events: none;
 }
 
-.sun {
-  opacity: 1;
+.slider .sun {
+  left: 6px;
 }
 
-.moon {
+.slider .moon {
+  right: 6px;
   opacity: 0;
-}
-
-/* Toggle ON (Dark Mode) */
-.switch input:checked + .slider {
-  background: #222;
 }
 
 .switch input:checked + .slider .sun {
@@ -232,3 +360,10 @@ body:not(.dark) footer {
 .switch input:checked + .slider .moon {
   opacity: 1;
 }
+
+/* Prevent permanent dimming */
+.art-card {
+  filter: none !important;
+  opacity: 1 !important;
+}
+
