@@ -9,7 +9,15 @@
 :root {
   --bg: #f5f5f5;
   --text: #111;
+  --muted-text: #555;
   --card: #ffffff;
+}
+
+body.dark {
+  --bg: #121212;
+  --text: #ffffff;
+  --muted-text: #cccccc;
+  --card: #1e1e1e;
 }
 
 /* ================= BODY ================= */
@@ -30,7 +38,6 @@ body.dark {
   background:
     linear-gradient(rgba(0,0,0,0.35), rgba(0,0,0,0.35)),
     url("images/1.jfif");
-  color: #fff;
 }
 
 /* ================= HEADER ================= */
@@ -60,19 +67,19 @@ body.dark .header {
   gap: 12px;
 }
 
-.menu-toggle {
-  font-size: 24px;
-  cursor: pointer;
-  display: none; /* mobile only */
-}
-
 .logo {
   font-size: 18px;
   font-weight: bold;
-  white-space: nowrap;
+  color: var(--text);
 }
 
-/* ================= FILTERS (PC) ================= */
+.menu-toggle {
+  font-size: 26px;
+  cursor: pointer;
+  display: none;
+}
+
+/* ================= DESKTOP FILTERS ================= */
 .desktop-filters {
   display: flex;
   gap: 24px;
@@ -83,12 +90,12 @@ body.dark .header {
   border: none;
   font-size: 15px;
   cursor: pointer;
-  color: #555;
+  color: var(--muted-text);
   position: relative;
 }
 
 .desktop-filters button.active {
-  color: #000;
+  color: var(--text);
   font-weight: 600;
 }
 
@@ -99,24 +106,10 @@ body.dark .header {
   left: 0;
   width: 100%;
   height: 2px;
-  background: #000;
-}
-
-body.dark .desktop-filters button {
-  color: #aaa;
-}
-
-body.dark .desktop-filters button.active {
-  color: #fff;
-}
-
-body.dark .desktop-filters button.active::after {
-  background: #fff;
+  background: var(--text);
 }
 
 /* ================= THEME TOGGLE ================= */
-/* ================= THEME TOGGLE (PC FIXED) ================= */
-/* ===== TOGGLE WRAPPER ===== */
 .switch {
   position: relative;
   width: 52px;
@@ -128,11 +121,10 @@ body.dark .desktop-filters button.active::after {
   display: none;
 }
 
-/* ===== SLIDER ===== */
 .slider {
   position: absolute;
   inset: 0;
-  background: #e0e0e0;               /* clearly LIGHT */
+  background: #e0e0e0;
   border-radius: 30px;
   cursor: pointer;
   transition: background 0.3s ease;
@@ -143,7 +135,6 @@ body.dark .desktop-filters button.active::after {
   padding: 0 6px;
 }
 
-/* ===== SLIDING KNOB ===== */
 .slider::before {
   content: "";
   position: absolute;
@@ -151,33 +142,23 @@ body.dark .desktop-filters button.active::after {
   width: 18px;
   left: 4px;
   top: 4px;
-  /* background: #ffffff; */
+  /* background: #fff; */
   border-radius: 50%;
   transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+.slider .sun,
+.slider .moon {
+  font-size: 14px;
   z-index: 2;
 }
 
+/* Light */
+.slider .sun { opacity: 1; }
+.slider .moon { opacity: 0; }
 
-/* ===== ICONS ===== */
-.slider .sun,
-.slider .moon {
-  position: relative;
-  z-index: 3;          /* ✅ above the knob */
-  font-size: 14px;
-  transition: transform 0.3s ease;
-}
-
-
-/* LIGHT MODE DEFAULT */
-.slider .sun {
-  opacity: 1;
-}
-
-.slider .moon {
-  opacity: 0;
-}
-
-/* DARK MODE */
+/* Dark */
 .switch input:checked + .slider {
   background: #222;
 }
@@ -186,13 +167,8 @@ body.dark .desktop-filters button.active::after {
   transform: translateX(26px);
 }
 
-.switch input:checked + .slider .sun {
-  opacity: 0;
-}
-
-.switch input:checked + .slider .moon {
-  opacity: 1;
-}
+.switch input:checked + .slider .sun { opacity: 0; }
+.switch input:checked + .slider .moon { opacity: 1; }
 
 /* ================= GALLERY ================= */
 .gallery {
@@ -204,14 +180,10 @@ body.dark .desktop-filters button.active::after {
 
 /* ================= ART CARD ================= */
 .art-card {
-  position: relative;           /* 🔥 FIXED hover */
+  position: relative;
   background: var(--card);
   border-radius: 18px;
   overflow: hidden;
-}
-
-body.dark .art-card {
-  background: #1e1e1e;
 }
 
 .art-card img {
@@ -220,7 +192,7 @@ body.dark .art-card {
   object-fit: cover;
 }
 
-/* ================= CARD HOVER ================= */
+/* ================= HOVER OVERLAY ================= */
 .overlay {
   position: absolute;
   inset: 0;
@@ -252,102 +224,39 @@ body.dark .art-card {
   background: rgba(255,255,255,0.75);
   backdrop-filter: blur(14px);
   transition: left 0.3s ease;
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+body.dark .sidebar {
+  background: rgba(0,0,0,0.65);
 }
 
 .sidebar.open {
   left: 0;
 }
 
-body.dark .sidebar {
-  background: rgba(0,0,0,0.6);
-}
-
 .sidebar button {
   background: none;
   border: none;
   font-size: 16px;
-  padding: 12px 0;
-  text-align: left;
   cursor: pointer;
+  color: var(--text);
+  text-align: left;
 }
 
-/* ================= FOOTER ================= */
-.footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 60px;
-
-  background: rgba(255,255,255,0.6);
-  backdrop-filter: blur(10px);
-
-  text-align: center;
-  font-size: 12px;
-  padding: 10px;
+/* ================= MOBILE THEME ================= */
+.mobile-theme {
+  margin-bottom: 10px;
 }
 
-.footer-social {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 14px;
-}
-
-.footer-social img {
-  width: 20px;
-  height: 20px;
-  object-fit: contain;
-}
-
-body.dark .footer {
-  background: rgba(0,0,0,0.6);
-}
-
-/* ================= MOBILE ONLY ================= */
-/* ===== MOBILE SIDEBAR FIX ===== */
-@media (max-width: 768px) {
-
-  .mobile-theme {
-    display: flex !important;
-    justify-content: flex-start;
-    margin-bottom: 24px;
-  }
-
-  .sidebar {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-  }
-
-  .sidebar button {
-    display: block;
-    width: 100%;
-    text-align: left;
-    font-size: 16px;
-    padding: 12px 6px;
-  }
-}
-
-.slider::before {
-  z-index: 1;
-}
-
-.slider .icon {
-  z-index: 2;
-  font-size: 14px;
-}
-/* ===== HAMBURGER FIX ===== */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block !important;
-    font-size: 26px;
-    cursor: pointer;
-  }
-}
+/* ================= OVERLAY ================= */
 #menuOverlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.3);
+  background: rgba(0,0,0,0.35);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
@@ -358,18 +267,43 @@ body.dark .footer {
   opacity: 1;
   pointer-events: auto;
 }
-@media (max-width: 768px) {
-  .desktop-filters {
-    display: none !important;
-  }
+
+/* ================= FOOTER ================= */
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background: rgba(255,255,255,0.6);
+  backdrop-filter: blur(10px);
+  text-align: center;
+  font-size: 12px;
+  padding: 10px;
 }
-.sidebar {
+
+body.dark .footer {
+  background: rgba(0,0,0,0.6);
+}
+
+.footer-social {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   gap: 14px;
 }
 
-.sidebar button {
-  width: 100%;
-  text-align: left;
+.footer-social img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .desktop-filters {
+    display: none;
+  }
 }
