@@ -256,7 +256,7 @@ body.dark .sidebar {
 #menuOverlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.35);
+  background:#ffffff00;
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.3s ease;
@@ -307,3 +307,108 @@ body.dark .footer {
     display: none;
   }
 }
+
+/* CHAT TOGGLE BUTTON */
+/* FLOATING BUTTON */
+.art-bot-toggle {
+  position: fixed;
+  bottom: 80px;
+  right: 22px;
+  width: 54px;
+  height: 54px;
+  background: rgba(255,255,255,0.12);
+  backdrop-filter: blur(14px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 3000;
+}
+
+/* CHAT WINDOW */
+.art-bot {
+  position: fixed;
+  bottom: 140px;
+  right: 22px;
+  width: 300px;
+  height: 400px;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(18px);
+  border-radius: 22px;
+  display: none;
+  flex-direction: column;
+  z-index: 3000;
+  overflow: hidden;
+}
+
+/* HEADER */
+.art-bot-header {
+  padding: 14px 16px;
+  background: rgba(255,255,255,0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: grab;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+.art-bot-header button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* BODY */
+.art-bot-body {
+  flex: 1;
+  padding: 14px;
+  overflow-y: auto;
+  font-size: 13px;
+}
+
+/* INPUT */
+.art-bot-input {
+  display: flex;
+  padding: 10px;
+  background: rgba(255,255,255,0.05);
+}
+
+.art-bot-input input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+}
+
+.art-bot-input button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* MESSAGES */
+.bot-msg, .user-msg {
+  padding: 10px 14px;
+  border-radius: 16px;
+  margin-bottom: 10px;
+  max-width: 85%;
+  line-height: 1.4;
+}
+
+.bot-msg {
+  background: rgba(255,255,255,0.15);
+}
+
+.user-msg {
+  background: rgba(255,255,255,0.25);
+  margin-left: auto;
+}
+

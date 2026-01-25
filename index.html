@@ -111,13 +111,13 @@
   <button onclick="filterArt('wall', null, true)">Wall Painting</button>
  <!-- MOBILE THEME TOGGLE -->
   <div class="mobile-theme">
-  <label class="switch">
+  <!-- <label class="switch">
     <input type="checkbox" id="themeToggleMobile">
     <span class="slider">
       <span class="icon sun">☀️</span>
       <span class="icon moon">🌙</span>
     </span>
-  </label>
+  </label> -->
 </div>
 </aside>
 
@@ -132,15 +132,73 @@
   </div>
 
   <div class="art-card" data-category="wall">
-    <img src="images/1.jfif">
+    <img src="images/2.jfif">
     <div class="overlay">Wall Painting</div>
   </div>
 
   <div class="art-card" data-category="sketch">
-    <img src="images/2.jfif">
+    <img src="images/3.jfif">
+    <div class="overlay">Sketch</div>
+  </div>
+  <div class="art-card" data-category="sketch">
+    <img src="images/4.jfif">
+    <div class="overlay">Sketch</div>
+  </div>
+  <div class="art-card" data-category="sketch">
+    <img src="images/5.jfif">
+    <div class="overlay">Sketch</div>
+  </div>
+  <div class="art-card" data-category="sketch">
+    <img src="images/6.jfif">
+    <div class="overlay">Sketch</div>
+  </div>
+  <div class="art-card" data-category="sketch">
+    <img src="images/7.jfif">
+    <div class="overlay">Sketch</div>
+  </div>
+  <div class="art-card" data-category="sketch">
+    <img src="images/8.jfif">
+    <div class="overlay">Sketch</div>
+  </div>
+  <div class="art-card" data-category="sketch">
+    <img src="images/9.jfif">
+    <div class="overlay">Sketch</div>
+  </div>
+  <div class="art-card" data-category="sketch">
+    <img src="images/10.jfif">
+    <div class="overlay">Sketch</div>
+  </div>
+  <div class="art-card" data-category="sketch">
+    <img src="images/11.jfif">
     <div class="overlay">Sketch</div>
   </div>
 </main>
+<!-- CHATBOT -->
+<!-- FLOATING ART CHATBOT -->
+ 
+<div class="art-bot" id="artBot">
+  <div class="art-bot-header" id="artBotHeader">
+    🎨 Art Gallery Assistant
+    <span class="art-bot-close" onclick="toggleBot()">×</span>
+  </div>
+
+  <div class="art-bot-body" id="artBotBody">
+    <div class="bot-msg">Hi 👋 Ask me about artists, artworks, or styles.</div>
+  </div>
+
+  <div class="art-bot-input">
+    <input
+      type="text"
+      id="artBotInput"
+      placeholder="Ask about artists, meaning, style..."
+      onkeydown="handleBotInput(event)"
+    />
+  </div>
+</div>
+
+<!-- CHATBOT TOGGLE BUTTON -->
+<div class="art-bot-toggle" onclick="toggleBot()">🎨</div>
+
 
 <!-- FOOTER -->
 <footer class="footer">
@@ -161,6 +219,6 @@
 <script src="js/filter.js" defer></script>
 <script src="js/hover.js" defer></script>
 <script src="js/menu.js" defer></script>
-
+<script src="js/chatbot.js" defer></script>
 </body>
 </html>
